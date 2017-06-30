@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:text-align="http://www.w3.org/1999/xhtml"
+      style="font-family:verdana;">
+
+    <head>
+        <title>Search Results</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 15px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+    </head>
+
+    <body style="background-color:powderblue;">
+
+        <div style="text-align:right;">
+            <form th:action="@{/logout}" method="post">
+                <span th:inline="text">You are logged in as &quot;[[${#httpServletRequest.remoteUser}]]&quot;</span><br/>
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+
+        <h3>
+            <p th:text="'Search Results for &quot;' + ${keyword} + '&quot;:'" />
+        </h3>
+
+        <table>
+            <tr style="width:100%">
+                <th>STORE DETAILS</th>
+                <th>HOURS</th>
+            </tr>
+            <tr th:each="store : ${searchResult.stores}">
+                <td>
+                    <span th:text="${store.name}"/><br/>
+                    <div th:if="${store.address_line_2} != null">
+                        <span th:text="${store.address_line_2}"/><br/>
+                    </div>
+                    <span th:text="${store.address_line_1}"/><br/>
+                    <span th:text="${store.city} + '  ' + ${store.postal_code}"/><br/>
+                    <span th:text="${store.telephone}"/><br/>
+                </td>
+                <td>
+                    <span th:text="'SUN:  ' + ${store.sunday_open} + ' - ' + ${store.sunday_close}"/><br/>
+                    <span th:text="'MON:  ' + ${store.monday_open} + ' - ' + ${store.monday_close}"/><br/>
+                    <span th:text="'TUE:  ' + ${store.tuesday_open} + ' - ' + ${store.tuesday_close}"/><br/>
+                    <span th:text="'WED:  ' + ${store.wednesday_open} + ' - ' + ${store.wednesday_close}"/><br/>
+                    <span th:text="'THU:  ' + ${store.thursday_open} + ' - ' + ${store.thursday_close}"/><br/>
+                    <span th:text="'FRI:  ' + ${store.friday_open} + ' - ' + ${store.friday_close}"/><br/>
+                    <span th:text="'SAT:  ' + ${store.saturday_open} + ' - ' + ${store.saturday_close}"/><br/>
+                </td>
+            </tr>
+        </table>
+
+        <form th:action="@{/search}">
+            <input type="submit" value="Search Again"/>
+        </form>
+
+    </body>
+</html>

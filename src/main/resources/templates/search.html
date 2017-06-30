@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      style="font-family:verdana;">
+
+    <head>
+        <title>Store Search</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+
+    <body style="background-color:powderblue;">
+
+        <div style="text-align:right;">
+            <form th:action="@{/logout}" method="post">
+                <span th:inline="text">You are logged in as &quot;[[${#httpServletRequest.remoteUser}]]&quot;</span><br/>
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+
+        <form th:action="@{/results}">
+            Search store details by keyword (city name, street name, etc):
+            <br/>
+            <input type="text" size="20" name="keyword"/>
+            <br/>
+            <input type="submit" value="Search"/>
+        </form>
+
+    </body>
+</html>
+

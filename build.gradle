@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+war {
+    baseName = 'LcboApp'
+//    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // rest server
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+    // mvc
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    testCompile("junit:junit")
+
+    // rest client
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework:spring-web")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+
+    // security
+    compile("org.springframework.boot:spring-boot-starter-security")
+    testCompile("org.springframework.security:spring-security-test")
+
+    // mongodb
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+    // junit 5
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0-M4")
+}
+
