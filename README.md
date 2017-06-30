@@ -1,29 +1,25 @@
-# Technology Choices:
+# lcbo-app
 
-I chose to use Java as a programming language because that's what I know best.
-
-I decided to build the app using Spring Framework.  I've never used Spring Framework but it seems to be widely used in the industry so I thought this would be a good opportunity to learn.
-
-I used MongoDB for storing user credentials.  I wanted to use a NoSQL database and found that Spring has support for MongoDB so that made the choice easy.
+This app queries lcboapi.com for LCBO store info and displays it to the user.
 
 
-# Prerequisites
+## Prerequisites
 
 1. MongoDB is installed and running
 2. Tomcat is installed and running
 
 
-# Building the app:
+## Building the app:
 
-From the LcboApp directory: gradlew war
-
-
-# Running the app:
-
-1. Deploy build/libs/LcboApp.war to Tomcat
-2. Go to http://localhost:8080/LcboApp
+From the lcbo-app directory: gradlew war
 
 
-# Testing the app:
+## Running the app:
 
-From LcboApp directory: gradlew tests
+1. Deploy build/libs/lcbo-app.war to Tomcat
+2. Go to http://localhost:8080/lcbo-app
+
+
+## Testing the app:
+
+From lcbo-app directory: gradlew tests
